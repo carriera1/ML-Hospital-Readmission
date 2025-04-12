@@ -36,8 +36,19 @@ The excess readmission ratio determines if a facility is above or below average,
 A decision tree will be used to handle both categorical and numeric data. This model can also have a high interpretability to the board. The code can be found in the file step_6_chosen-algo.py
 
 ## Step 7: Validation of Model
+The validation of the model will also be found in step_6_chosen-algo.py
 
 ## Instructions to Run Model
+To run this model, download the data set found in the repository and the python file "step_6_chosen-algo.py". If you want a visual, remove the # before lines 40-43 of code. Then, run the entire python file to see printed results.
+
+## Conclusions, Predictions, and Recommendations
+The already provided models of "Predicted Readmission Rate" and "Expected Readmission Rate" gave the best splits. This is likely because those are the values used to calculate the value we are predicting. I would recommend trying this model again, but with different predictors to see if we can keep the high accuracy without the correlated variables.
 
 ## Disclosures: Ethics Statements, Limitations, Generative AI use, and References used.
--Numerous hospitals provided NaN values, as well as reporting "Too Few to Report" in numeric data.
+-Numerous hospitals provided NaN values, as well as reporting "Too Few to Report" in numeric data. The full count can be found in the step_3_assessment.py file
+
+-The data provided includes no revealing data about any patient, and this may lead to limitations because to model doesn't use any data related to patient age and previous medical history. 
+
+-For code, the ISLP labs were used as reference for decision trees and validation of the model.
+
+-Generative AI use was also used for ideas relating to choosing a model and questions about the data

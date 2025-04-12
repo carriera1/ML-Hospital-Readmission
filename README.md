@@ -5,12 +5,26 @@
 This hypothetical project was commissioned by a hospital board seeking to reduce costs associated with patient readmissions. Using machine learning methods, I plan to find ways to save money. This file will be used to show each step in the project, instructions to run any code, and disclosure statements.
 
 ## Step 1: Find Resources
-Two resources for background information:
+-Background information related to the data: https://www.cms.gov/medicare/payment/prospective-payment-systems/acute-inpatient-pps/hospital-readmissions-reduction-program-hrrp
+
+-Offical paper on the characteristics of readmission https://hcup-us.ahrq.gov/reports/statbriefs/sb304-readmissions-2016-2020.jsp?_gl=1*cn2k9h*_ga*MTk4OTE4Mjc1NC4xNzQ0NDE4MjE5*_ga_1NPT56LE7J*MTc0NDQxODIxOC4xLjAuMTc0NDQxODIxOC4wLjAuMA..
 
 ## Step 2: Dataset Assessment
 The data comes from https://data.cms.gov/provider-data/dataset/9n3s-kdb3, a government website relating to medicare and medicaid services. The dataset is read in the file step_3_assessment.py. We can see that the data includes 18510 rows of data, along with 12 variable columns. Other assessments can be found in code.
 
 ## Step 3: Variable Description
+##### Facility Name: Strings containing the name of the facility
+##### Facility ID: Unique integer values representing the facility
+##### State: Strings containing the state abbreviation of the facility
+##### Measure Name: 6 unique strings classifying heart attack (AMI), heart failure (HF), pneumonia (PN), chronic obstructive pulmonary disease (COPD), hip/knee replacement (THA/TKA), and coronary artery bypass graft surgery (CABG)
+##### Number of Discharges: Float (with NaN values) containing the number of discharges in the facility
+##### Footnote: Float (with NaN values) clarifying the data
+##### Excess Readmission Ratio: Float (with NaN values) containing the ratio of readmission based on hospitals with similar patients. Calculated by next two vairables
+##### Predicted Readmission Rate: Float (with NaN values) calculated readmission rate based on a precalculated statistical model for the facility
+##### Expected Readmission Rate: Float (with NaN values) calculated readmission rate based on a precalculated statistical model using national data
+##### Number of Readmissions: Float (with NaN values) containing the number of readmissions
+##### Start Date: String in datetime format representing the start of the data collection period.
+##### End Date: String in datetime format representing the end of the data collection period.
 
 ## Step 4: Research Question
 
@@ -23,3 +37,4 @@ The data comes from https://data.cms.gov/provider-data/dataset/9n3s-kdb3, a gove
 ## Instructions to Run Model
 
 ## Disclosures: Ethics Statements, Limitations, Generative AI use, and References used.
+-Numerous hospitals provided NaN values, as well as reporting "Too Few to Report" in numeric data.

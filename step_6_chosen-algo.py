@@ -3,10 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import subplots
 import sklearn.model_selection as skm
-from ISLP import confusion_table
 from ISLP.models import ModelSpec as MS
 from sklearn.tree import (DecisionTreeClassifier as DTC,
-                          DecisionTreeRegressor as DTR,
                           plot_tree,
                           export_text)
 from sklearn.metrics import (accuracy_score,
@@ -21,8 +19,10 @@ data.replace("Too Few to Report", np.nan, inplace=True)
 #Create an if/else statement where above 1 is categorized as yes, no otherwise
 avg = np.where(data["Excess Readmission Ratio"] > 1, "Yes", "No")
 
-#Remove excess readmission ratio because it is the predicted, then other unnecessary predictors
-model = MS(data.columns.drop(["Excess Readmission Ratio", "Facility Name", "Facility ID", "State","Measure Name", "Footnote", "Start Date", "End Date"]), intercept=False)
+#Remove excess readmission ratio because it is the predicted, then other columns given
+model = MS(data.columns.drop(["Excess Readmission Ratio", "Facility Name", 
+                              "Facility ID", "State","Measure Name", "Footnote", 
+                              "Start Date", "End Date"]), intercept=False)
 D = model.fit_transform(data)
 
 
@@ -44,6 +44,12 @@ print("Residual Deviation:",np.sum(log_loss(avg, clf.predict_proba(X))))
 
 
 #Alternative to the visual, prints each branch
-print(export_text(clf,
-                  feature_names=feature_names,
-                  show_weights=True))
+print(export_text(clf, feature_names=feature_names, show_weights=True))
+                  
+             
+#Validate the model                  
+validation = skm.ShuffleSplit(n_splits=1, test_size=200, random_state=0)
+
+results = skm.cross_validate(clf, D, avg, cv=validation)
+
+print("Test Score:",results['test_score'])

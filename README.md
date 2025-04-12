@@ -27,10 +27,13 @@ The data comes from https://data.cms.gov/provider-data/dataset/9n3s-kdb3, a gove
 ##### End Date: String in datetime format representing the end of the data collection period.
 
 ## Step 4: Research Question
+Can we use decision trees to predict whether a hospital will have an above-average excess readmission ratio based on specific predictors?
 
 ## Step 5: Research Explanation
+The excess readmission ratio determines if a facility is above or below average, based on if it's above 1 or not. Having a higher than 1 ratio means there are more patient readmissions than expected, costing the facility more money. This model will show the predictors that determine a specific facilities ratio, showing what may need to be adressed to save more money. 
 
 ## Step 6: Model Solution to Question
+A decision tree will be used to handle both categorical and numeric data. This model can also have a high interpretability to the board. The code can be found in the file step_6_chosen-algo.py
 
 ## Step 7: Validation of Model
 
